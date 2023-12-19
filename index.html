@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Frontend Mentor | Notifications page</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+</head>
+
+<body>
+  <div class="container">
+    <div class="head">
+      <h3>Notifications <span class="ctd">3</span></h3>
+      <p class="all">Mark all as read</p>
+    </div>
+    <div class="notifications">
+      <div class="notice" id="notice">
+        <div class="h">
+          <img src="./avatar-mark-webber.webp" alt="">
+          <div class="ttext">
+            <div class="text"><span>Mark Webber</span>reacted to your recent post <span>My first tournament
+                today!</span></div>
+            <small>1m ago</small>
+          </div>
+        </div>
+      </div>
+      <div class="notice" id="notice">
+        <div class="h">
+          <img src="./avatar-angela-gray.webp" alt="">
+          <div class="ttext">
+            <div class="text"><span> Angela Gray</span>followed you</div>
+            <small>5m ago</small>
+          </div>
+        </div>
+      </div>
+      <div class="notice" id="notice">
+        <div class="h">
+          <img src="./avatar-jacob-thompson.webp" alt="">
+          <div class="ttext">
+            <div class="text"><span> Jacob Thompson</span>has joined your group<span>Chess Club</span></div>
+            <small> 1 day ago
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="notice">
+        <img src="./avatar-rizky-hasanuddin.webp" alt="">
+        <div class="hk">
+          <div class="ttext">
+            <div class="text" id="text"><span> Rizky Hasanuddin</span>sent you a private message</div>
+            <small>5 days ago</small>
+          </div>
+          <p id="none">Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and
+            I'm already having lots of fun and improving my game.</p>
+        </div>
+      </div>
+      <div class="notice">
+        <img src="./avatar-kimberly-smith.webp" alt="">
+        <div class="ttext">
+          <div class="text"><span>Kimberly Smith</span>commented on your picture <img
+              src="./image-chess.webp" alt="">
+          </div>
+          <small>1 week ago</small>
+        </div>
+      </div>
+      <div class="notice">
+        <img src="./avatar-nathan-peterson.webp" alt="">
+        <div class="ttext">
+          <div class="text"><span>Anna Kim </span>reacted to your recent post 5 end-game strategies to increase your win
+            rate</div>
+          <small>2 weeks ago</small>
+        </div>
+      </div>
+      <div class="notice">
+        <img src="./avatar-anna-kim.webp" alt="">
+        <div class="ttext">
+          <div class="text"><span>Mark Webber</span>left the group <span>Chess Club</span></div>
+          <small>2 weeks ago</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Stephen Olasunkanmi</a>.
+  </div>
+
+  <script>
+    // Make sure the DOM is fully loaded before manipulating it
+    document.addEventListener('DOMContentLoaded', function () {
+      const none = document.querySelector('#none');
+      const text = document.querySelector('#text');
+      const Notice = document.querySelectorAll('#notice');
+      const countdownElement = document.querySelector('.ctd');
+      const all = document.querySelector('.all')
+
+      
+      let countdownValue = parseInt(countdownElement.textContent, 10);
+
+      all.addEventListener('click', () => {
+    Notice.forEach((notice) => {
+        notice.classList.add('click');
+    });
+        // Set the countdown value to 0
+        countdownValue = 0;
+    countdownElement.textContent = countdownValue;
+});
+
+      Notice.forEach((notice) => {
+    notice.addEventListener('click', () => {
+        notice.classList.add('click');
+
+        if (countdownValue > 0) {
+                countdownValue--;
+                countdownElement.textContent = countdownValue;
+            }
+    });
+});
+
+      text.addEventListener('click', () => {
+        none.classList.toggle('active');
+      });
+    });
+  </script>
+
+</body>
+
+</html>
